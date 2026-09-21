@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Unbounded", "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #14162b;
+  --color-ink-soft: #6b6e85;
+  --color-paper: #f5f5fb;
+  --color-marker: #ff4438;
+  --color-marker-dark: #e12f24;
+}
+
+:root {
+  font-family: var(--font-sans);
+}
+
+body {
+  background: var(--color-paper);
+}
+
+/* Точечная сетка — отсылка к бланку ответов с кружками-вариантами. Используется
+   один раз, в хиро на главной — намеренно не повторяется по всему сайту. */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, rgba(20, 22, 43, 0.14) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes modal-pop {
+  from { opacity: 0; transform: scale(0.96) translateY(4px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-modal-pop {
+  animation: modal-pop 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
