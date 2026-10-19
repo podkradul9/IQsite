@@ -37,7 +37,7 @@ export default function TestPage() {
           <div className="h-full bg-marker transition-all duration-300" style={{ width: `${progress}%` }} />
         </div>
 
-        <h2 className="font-display text-xl sm:text-2xl font-bold text-ink mb-8 leading-snug">{question.text}</h2>
+        <h2 className="font-display text-xl sm:text-2xl font-normal tracking-tight text-ink mb-8 leading-snug">{question.text}</h2>
 
         <div className="space-y-3" role="radiogroup" aria-label={question.text}>
           {question.options.map((opt, i) => (
@@ -47,7 +47,7 @@ export default function TestPage() {
               aria-checked={selected === i}
               onClick={() => selectOption(i, opt.score)}
               className={`w-full flex items-center gap-4 text-left px-5 py-4 rounded-2xl bg-card transition focus:outline-none focus-visible:ring-2 focus-visible:ring-marker ${
-                selected === i ? "ring-2 ring-marker" : "hover:bg-white/[0.06]"
+                selected === i ? "ring-2 ring-marker" : "hover:bg-white/90"
               }`}
             >
               <span

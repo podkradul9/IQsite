@@ -82,14 +82,14 @@ export default function ReactionTest() {
     <div className="min-h-screen bg-paper flex flex-col items-center justify-center px-6">
       <div className="w-full max-w-lg">
         <div className="text-center mb-4">
-          <span className="inline-block text-xs font-semibold text-amber-300 bg-amber-400/15 px-3 py-1 rounded-full">
+          <span className="inline-block text-xs font-normal text-amber-700 bg-amber-100 px-3 py-1 rounded-full">
             Раунд {Math.min(round + 1, reactionTest.rounds)} из {reactionTest.rounds}
           </span>
         </div>
 
         <button
           onClick={handleBoxClick}
-          className={`w-full h-72 rounded-3xl flex items-center justify-center text-2xl font-bold font-display transition-colors duration-150 ring-1 ring-white/5 select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 ${boxStyles[phase]}`}
+          className={`w-full h-72 rounded-3xl flex items-center justify-center text-2xl font-normal font-display transition-colors duration-150 ring-1 ring-white/70 backdrop-blur-xl shadow-[0_30px_60px_-35px_rgba(30,50,90,0.3)] select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 ${boxStyles[phase]}`}
         >
           <span aria-live="polite">{boxText[phase]}</span>
         </button>

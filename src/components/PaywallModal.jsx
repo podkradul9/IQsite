@@ -109,7 +109,7 @@ export default function PaywallModal({ testSlug, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-[rgba(30,50,90,0.25)] backdrop-blur-sm flex items-center justify-center p-4 z-50"
       onClick={onClose}
     >
       <div
@@ -117,7 +117,7 @@ export default function PaywallModal({ testSlug, onClose }) {
         aria-modal="true"
         aria-labelledby="paywall-title"
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-md bg-card rounded-3xl shadow-xl p-7 animate-modal-pop"
+        className="relative w-full max-w-md bg-white/90 backdrop-blur-xl rounded-[2rem] shadow-xl p-7 animate-modal-pop"
       >
         <button
           onClick={onClose}
@@ -127,10 +127,10 @@ export default function PaywallModal({ testSlug, onClose }) {
           ×
         </button>
 
-        <h2 id="paywall-title" className="font-display text-2xl font-bold text-ink text-center mb-3 leading-tight">
+        <h2 id="paywall-title" className="font-display text-2xl font-normal tracking-tight text-ink text-center mb-3 leading-tight">
           Результаты теста готовы!
         </h2>
-        <p className="text-center text-marker font-bold text-lg mb-5">Цена всего за 10 ₽*</p>
+        <p className="text-center text-marker font-normal text-lg mb-5">Цена всего за 10 ₽*</p>
 
         <div className="flex justify-center gap-3 mb-4" aria-hidden="true">
           {[
@@ -140,7 +140,7 @@ export default function PaywallModal({ testSlug, onClose }) {
           ].map(([val, label], i) => (
             <div key={i} className="flex flex-col items-center">
               <div
-                className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold tabular-nums ${
+                className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-normal tabular-nums ${
                   i === 0 ? "bg-marker text-white" : "border-2 border-marker/50 text-ink"
                 }`}
               >
@@ -201,7 +201,7 @@ export default function PaywallModal({ testSlug, onClose }) {
           </label>
 
           {error && (
-            <p className="text-red-400 text-xs mb-3" role="alert">
+            <p className="text-red-600 text-xs mb-3" role="alert">
               {error}
             </p>
           )}
@@ -209,7 +209,7 @@ export default function PaywallModal({ testSlug, onClose }) {
           <button
             type="submit"
             disabled={!canSubmit}
-            className="w-full py-3.5 rounded-xl bg-marker hover:bg-marker-dark disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+            className="w-full py-3.5 rounded-xl bg-marker hover:bg-marker-dark disabled:opacity-40 disabled:cursor-not-allowed text-white font-normal transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
           >
             {loading ? "Секунду..." : "Получить результат"}
           </button>

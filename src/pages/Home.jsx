@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import TestPoster from "../components/TestPoster";
-import heroImg from "../assets/hero-face.webp";
+import Hero from "../components/hero/Hero";
 import "./Home.css";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -41,6 +41,14 @@ function GalleryItem({ id }) {
 export default function Home() {
   const wrapperRef = useRef(null);
   const contentRef = useRef(null);
+  const smootherRef = useRef(null);
+
+  // Кнопки в хиро ведут к галерее тестов. Если плавный скролл включён, крутим через
+  // него — обычный scrollIntoView внутри ScrollSmoother не сработает.
+  function showTests() {
+    if (smootherRef.current) smootherRef.current.scrollTo("#tests", true, "top 40px");
+    else document.getElementById("tests")?.scrollIntoView({ behavior: "smooth" });
+  }
 
   useLayoutEffect(() => {
     // Как в исходном макете: на тач-устройствах плавный скролл не включаем —
@@ -49,16 +57,11 @@ export default function Home() {
     if (ScrollTrigger.isTouch === 1 || reduceMotion) return;
 
     const ctx = gsap.context(() => {
-      ScrollSmoother.create({
+      smootherRef.current = ScrollSmoother.create({
         wrapper: wrapperRef.current,
         content: contentRef.current,
         smooth: 1.5,
         effects: true,
-      });
-
-      gsap.fromTo(".hero-section", { opacity: 1 }, {
-        opacity: 0,
-        scrollTrigger: { trigger: ".hero-section", start: "center", end: "820", scrub: true },
       });
 
       gsap.utils.toArray(".gallery__left .gallery__item").forEach((item) => {
@@ -78,35 +81,19 @@ export default function Home() {
       });
     }, wrapperRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      smootherRef.current = null;
+    };
   }, []);
 
   return (
     <>
-      <nav className="top-nav">
-        <Link to="/" className="top-nav__logo">TestLab</Link>
-        <div className="top-nav__links">
-          <Link to="/dashboard">Кабинет</Link>
-          <Link to="/login" className="top-nav__cta">Войти</Link>
-        </div>
-      </nav>
-
       <div className="wrapper" ref={wrapperRef}>
         <div className="content" ref={contentRef}>
-          <header className="hero-section">
-            <img data-speed=".6" className="hero" src={heroImg} alt="" aria-hidden="true" />
-            <div className="page-container">
-              <div data-speed=".75" className="main-header">
-                <h1 className="main-title">узнай себя</h1>
-                <p className="main-subtitle">
-                  Тесты на IQ, скорость реакции, отношения и привлекательность
-                  <span aria-hidden="true"> ↓</span>
-                </p>
-              </div>
-            </div>
-          </header>
+          <Hero onShowTests={showTests} />
 
-          <div className="portfolio">
+          <div className="portfolio" id="tests">
             <div className="page-container">
               <main className="gallery">
                 <div data-speed=".9" className="gallery__left">

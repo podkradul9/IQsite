@@ -1,8 +1,9 @@
-/* Главная по макету "creative scroll": плавный скролл GSAP ScrollSmoother,
-   хиро с крупным заголовком и двухколоночная галерея с параллаксом.
-   Вместо картинок в галерее — постеры тестов (TestPoster). */
+/* Главная: хиро в стиле glassmorphism (components/hero), ниже — плавный скролл
+   GSAP ScrollSmoother и двухколоночная галерея с параллаксом, где вместо картинок
+   стоят постеры тестов (TestPoster). Палитра: фон #f0f0f0, тёмно-синий
+   rgba(30,50,90), серо-синий #5E6470, матовое стекло. */
 
-.content, .hero, .main-header, .gallery > * {
+.content, .gallery > * {
   will-change: transform;
 }
 
@@ -10,102 +11,13 @@
   padding: 0 7vw;
 }
 
-/* ---------- Верхняя навигация ---------- */
-
-.top-nav {
-  position: fixed;
-  z-index: 50;
-  inset: 0 0 auto 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem 7vw 2.75rem;
-  color: #f4efec;
-  background: linear-gradient(to bottom, rgba(22, 22, 22, .92) 35%, rgba(22, 22, 22, 0));
-}
-
-.top-nav a {
-  color: inherit;
-  text-decoration: none;
-  border-radius: 999px;
-}
-
-.top-nav a:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
-}
-
-.top-nav__logo {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 600;
-  letter-spacing: .02em;
-}
-
-.top-nav__links {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-  font-size: .78rem;
-  text-transform: uppercase;
-  letter-spacing: .18em;
-}
-
-.top-nav__links a:not(.top-nav__cta) {
-  opacity: .75;
-  transition: opacity .2s;
-}
-
-.top-nav__links a:hover {
-  opacity: 1;
-}
-
-.top-nav__cta {
-  border: 1px solid currentColor;
-  padding: .6rem 1.3rem;
-}
-
 /* ---------- Хиро ---------- */
 
-.hero-section {
-  position: relative;
-}
-
-.hero {
-  width: calc(var(--index) * 36);
-  position: absolute;
-  left: 37vw;
-  top: 22vh;
-  z-index: -1;
-  pointer-events: none;
-  user-select: none;
-}
-
-.main-header {
-  height: 100vh;
-  position: relative;
-}
-
-.main-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: calc(var(--index) * 8);
-  position: absolute;
-  width: min-content;
-  bottom: 12vh;
-  line-height: .9;
-  color: #f4efec;
-}
-
-.main-subtitle {
-  position: absolute;
-  right: 0;
-  bottom: 13vh;
-  max-width: 17rem;
-  text-align: right;
-  color: #cdc6c3;
-  line-height: 1.6;
-  font-size: .95rem;
+/* Подложка под видео в хиро: видна, пока ролик грузится или если он заблокирован */
+.hero-fallback {
+  background:
+    radial-gradient(120% 80% at 70% 20%, rgba(255, 255, 255, .9), transparent 60%),
+    linear-gradient(160deg, #dfe8f3 0%, #eef1f5 45%, #cfdbe9 100%);
 }
 
 /* ---------- Галерея ---------- */
@@ -127,7 +39,7 @@
   width: 100%;
   max-width: calc(var(--index) * 21);
   margin-bottom: var(--gallery-gap);
-  border-radius: 8px;
+  border-radius: 2.2rem;
 }
 
 .gallery__left {
@@ -140,16 +52,17 @@
 }
 
 .text-block {
-  color: #cdc6c3;
+  color: #5E6470;
   position: relative;
 }
 
 .text-block__h {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 2rem;
   line-height: 2.4rem;
-  color: #f4efec;
+  letter-spacing: -.01em;
+  color: rgba(30, 50, 90, .95);
   margin-bottom: 1.5rem;
 }
 
@@ -160,10 +73,12 @@
 /* ---------- Постеры тестов ---------- */
 
 .poster {
-  --poster-bg: #0f0f0f;
-  --poster-fg: #f4efec;
-  --poster-soft: #b5aeab;
-  --poster-accent: var(--color-marker);
+  --poster-bg: rgba(255, 255, 255, .55);
+  --poster-fade: rgba(255, 255, 255, .85);
+  --poster-fg: rgba(30, 50, 90, .95);
+  --poster-soft: #5E6470;
+  --poster-accent: rgba(30, 50, 90, .6);
+  --poster-glow: linear-gradient(145deg, #c3d3ea, #eef2f8);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -173,7 +88,10 @@
   background: var(--poster-bg);
   color: var(--poster-fg);
   text-decoration: none;
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .8);
+  border: 1px solid rgba(255, 255, 255, .7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 30px 60px -35px rgba(30, 50, 90, .3);
 }
 
 .poster:focus-visible {
@@ -201,7 +119,7 @@
   display: flex;
   flex-direction: column;
   padding: 18cqw 7cqw 7cqw;
-  background: linear-gradient(to top, var(--poster-bg) 55%, transparent);
+  background: linear-gradient(to top, var(--poster-fade) 55%, transparent);
 }
 
 .poster__category {
@@ -215,7 +133,8 @@
 
 .poster__title {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 400;
+  letter-spacing: -.01em;
   font-size: max(19px, 6.4cqw);
   line-height: 1.12;
   margin-bottom: 2.5cqw;
@@ -234,7 +153,6 @@
   font-size: max(12px, 2.8cqw);
   text-transform: uppercase;
   letter-spacing: .18em;
-  font-weight: 600;
   padding-bottom: .35em;
   border-bottom: 1px solid currentColor;
   align-self: flex-start;
@@ -251,12 +169,12 @@
 .poster-iq__word, .poster-love__word, .poster-pair__word,
 .poster-charm__word, .poster-charisma__word, .poster-reaction__ms {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
   line-height: .8;
 }
 
-/* IQ — огромные буквы поверх красного круга, как на постерах галереи */
+/* IQ — огромные буквы поверх светящегося круга */
 .poster--iq {
   aspect-ratio: 4 / 5;
 }
@@ -265,7 +183,7 @@
   width: 62cqw;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--color-marker);
+  background: var(--poster-glow);
   right: -10cqw;
   top: 10cqw;
 }
@@ -285,12 +203,13 @@
   color: var(--poster-soft);
 }
 
-/* Отношения (для девушек) — красный постер с контурным вертикальным словом */
+/* Отношения (для девушек) — тёмно-синий постер с контурным вертикальным словом */
 .poster--love {
-  --poster-bg: var(--color-marker);
+  --poster-bg: rgba(30, 50, 90, .88);
+  --poster-fade: rgba(30, 50, 90, .95);
   --poster-fg: #fff;
-  --poster-soft: rgba(255, 255, 255, .82);
-  --poster-accent: #161616;
+  --poster-soft: rgba(255, 255, 255, .75);
+  --poster-accent: rgba(255, 255, 255, .6);
   aspect-ratio: 3 / 4;
 }
 
@@ -301,7 +220,7 @@
   top: 5cqw;
   font-size: 18cqw;
   color: transparent;
-  -webkit-text-stroke: 2px rgba(255, 255, 255, .9);
+  -webkit-text-stroke: 2px rgba(255, 255, 255, .75);
 }
 
 .poster-love__heart {
@@ -309,14 +228,13 @@
   top: 4cqw;
   font-size: 36cqw;
   line-height: 1;
-  color: #161616;
+  color: #c3d3ea;
 }
 
-/* Отношения (для парней) — светлый постер с двумя пересекающимися кольцами */
+/* Отношения (для парней) — голубой постер с двумя пересекающимися кольцами */
 .poster--pair {
-  --poster-bg: #e9e4e0;
-  --poster-fg: #161616;
-  --poster-soft: #5a5452;
+  --poster-bg: rgba(207, 219, 233, .75);
+  --poster-fade: rgba(214, 224, 237, .95);
   aspect-ratio: 5 / 6;
 }
 
@@ -324,7 +242,7 @@
   width: 36cqw;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 2.4cqw solid #161616;
+  border: 2.4cqw solid rgba(30, 50, 90, .9);
   top: 9cqw;
 }
 
@@ -334,7 +252,7 @@
 
 .poster-pair__ring--b {
   left: 32cqw;
-  border-color: var(--color-marker);
+  border-color: #8fa7cc;
 }
 
 .poster-pair__word {
@@ -342,10 +260,10 @@
   right: 6cqw;
   top: 7cqw;
   font-size: 13cqw;
-  color: #161616;
+  color: rgba(30, 50, 90, .9);
 }
 
-/* Привлекательность (для женщин) — слово на тёмном фоне с красной диагональю */
+/* Привлекательность (для женщин) — слово и голубая диагональ */
 .poster--charm {
   aspect-ratio: 2 / 3;
 }
@@ -356,7 +274,7 @@
   left: -25cqw;
   top: 52cqw;
   transform: rotate(-24deg);
-  background: var(--color-marker);
+  background: linear-gradient(90deg, #8fa7cc, #c3d3ea);
 }
 
 .poster-charm__word {
@@ -384,12 +302,12 @@
   width: 44cqw;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--color-marker);
+  background: var(--poster-glow);
   right: 9cqw;
   top: 24cqw;
 }
 
-/* Скорость реакции — красный круг становится зелёным при наведении,
+/* Скорость реакции — круг становится зелёным при наведении,
    как фон в самом тесте */
 .poster--reaction {
   aspect-ratio: 5 / 7;
@@ -401,7 +319,7 @@
   border-radius: 50%;
   left: 17cqw;
   top: 9cqw;
-  background: var(--color-marker);
+  background: rgba(30, 50, 90, .85);
   display: flex !important;
   flex-direction: column;
   align-items: center;
@@ -435,14 +353,15 @@
   justify-content: space-between;
   gap: 1.5rem 3rem;
   padding: 3rem 0 4rem;
-  border-top: 1px solid rgba(255, 255, 255, .08);
+  border-top: 1px solid rgba(30, 50, 90, .1);
   margin: 0 7vw;
 }
 
 .site-footer__logo {
   font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 600;
+  letter-spacing: -.03em;
+  color: rgba(30, 50, 90, .9);
 }
 
 .site-footer__links {
@@ -471,34 +390,6 @@
 /* ---------- Телефоны ---------- */
 
 @media (max-width: 760px) {
-  .top-nav {
-    padding: 1.25rem 6vw;
-  }
-
-  .top-nav__links {
-    gap: 1rem;
-    font-size: .7rem;
-    letter-spacing: .12em;
-  }
-
-  .hero {
-    width: 92vw;
-    left: 4vw;
-    top: 10vh;
-  }
-
-  .main-title {
-    font-size: 19vw;
-    bottom: 20vh;
-  }
-
-  .main-subtitle {
-    left: 0;
-    right: auto;
-    bottom: 8vh;
-    text-align: left;
-  }
-
   .gallery {
     flex-direction: column;
     padding: 4rem 0;

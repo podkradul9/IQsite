@@ -46,8 +46,8 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-paper flex items-center justify-center px-6">
-      <form onSubmit={handleSubmit} className="w-full max-w-sm bg-card rounded-3xl ring-1 ring-white/5 p-7">
-        <h1 className="font-display text-xl font-bold text-ink mb-1">
+      <form onSubmit={handleSubmit} className="w-full max-w-sm bg-card rounded-3xl ring-1 ring-white/70 backdrop-blur-xl shadow-[0_30px_60px_-35px_rgba(30,50,90,0.3)] p-7">
+        <h1 className="font-display text-xl font-normal tracking-tight text-ink mb-1">
           {mode === "magic" ? "Вход по ссылке" : mode === "login" ? "Вход" : "Регистрация"}
         </h1>
         {mode === "magic" && !magicSent && (
@@ -86,11 +86,11 @@ export default function Login() {
               />
             )}
 
-            {error && <p className="text-rose-400 text-sm mb-4">{error}</p>}
+            {error && <p className="text-rose-600 text-sm mb-4">{error}</p>}
 
             <button
               disabled={sending}
-              className="w-full py-3 rounded-xl bg-marker hover:bg-marker-dark disabled:opacity-50 text-white font-bold transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+              className="w-full py-3 rounded-xl bg-marker hover:bg-marker-dark disabled:opacity-50 text-white font-normal transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
             >
               {sending ? "Отправляем..." : mode === "magic" ? "Прислать ссылку для входа" : mode === "login" ? "Войти" : "Создать аккаунт"}
             </button>

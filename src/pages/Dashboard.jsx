@@ -46,14 +46,14 @@ export default function Dashboard() {
     <div className="min-h-screen bg-paper px-6 py-10">
       <div className="max-w-2xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="font-display text-2xl font-bold text-ink">Личный кабинет</h1>
+          <h1 className="font-display text-2xl font-normal tracking-tight text-ink">Личный кабинет</h1>
           <button onClick={logout} className="text-ink-soft hover:text-ink-soft text-sm rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-marker">
             Выйти
           </button>
         </div>
 
-        <div className="bg-card rounded-2xl ring-1 ring-white/5 p-6 mb-6">
-          <h2 className="font-bold text-ink mb-3">Подписка</h2>
+        <div className="bg-card rounded-2xl ring-1 ring-white/70 backdrop-blur-xl shadow-[0_30px_60px_-35px_rgba(30,50,90,0.3)] p-6 mb-6">
+          <h2 className="font-normal text-ink mb-3">Подписка</h2>
           {sub ? (
             <>
               <p className="text-ink-soft text-sm mb-1">
@@ -68,7 +68,7 @@ export default function Dashboard() {
                 <button
                   onClick={cancelSubscription}
                   disabled={canceling}
-                  className="px-4 py-2 rounded-xl bg-rose-500/10 text-rose-300 hover:bg-rose-500/20 transition text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+                  className="px-4 py-2 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 transition text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
                 >
                   {canceling ? "Отменяем..." : "Отменить подписку"}
                 </button>
@@ -88,8 +88,8 @@ export default function Dashboard() {
           )}
         </div>
 
-        <div className="bg-card rounded-2xl ring-1 ring-white/5 p-6">
-          <h2 className="font-bold text-ink mb-3">История тестов</h2>
+        <div className="bg-card rounded-2xl ring-1 ring-white/70 backdrop-blur-xl shadow-[0_30px_60px_-35px_rgba(30,50,90,0.3)] p-6">
+          <h2 className="font-normal text-ink mb-3">История тестов</h2>
           {history.length === 0 ? (
             <p className="text-ink-soft text-sm">Пока ничего не пройдено</p>
           ) : (

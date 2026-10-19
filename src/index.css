@@ -1,43 +1,42 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Raleway Local";
-  src: url("./assets/fonts/raleway-regular.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
+    font-family: "Helvetica Regular";
+    src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.eot");
+    src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.svg#Helvetica Regular")format("svg");
 }
 
-/* Тёмная палитра из дизайна "creative scroll": текстурный графитовый фон, тёплый
-   светлый текст и красный акцент как на постерах галереи. Токены ink/paper/marker
-   оставлены прежними по названию, поэтому все внутренние страницы перекрасились
-   без переписывания классов. */
+/* В "Helvetica Regular" нет кириллицы, поэтому русские буквы берутся из следующих
+   в списке системных Helvetica Neue / Helvetica / Arial — они того же рисунка.
+   Токены ink/paper/card/marker сохранили названия, поэтому внутренние страницы
+   (тест, результат, оплата, кабинет) перекрасились без переписывания классов. */
 @theme {
-  --font-sans: "Raleway", "Raleway Local", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Jost", "Raleway Local", ui-sans-serif, system-ui, sans-serif;
+  --font-helvetica: "Helvetica Regular", "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-helvetica);
+  --font-display: var(--font-helvetica);
 
-  --color-ink: #f4efec;
-  --color-ink-soft: #b5aeab;
-  --color-paper: #161616;
-  --color-card: #222121;
-  --color-marker: #ff4438;
-  --color-marker-dark: #e12f24;
+  --color-ink: rgb(30 50 90 / 0.95);
+  --color-ink-soft: #5E6470;
+  --color-paper: #f0f0f0;
+  --color-card: rgb(255 255 255 / 0.6);
+  --color-marker: rgb(30 50 90 / 0.8);
+  --color-marker-dark: rgb(30 50 90);
 }
 
 :root {
-  font-family: var(--font-sans);
-  color-scheme: dark;
+  font-family: var(--font-helvetica);
   --index: calc(1vw + 1vh);
 }
 
 body {
-  background-color: var(--color-paper);
-  background-image: url("./assets/bg.jpg");
-  background-size: 50px;
-  color: var(--color-ink);
+  margin: 0;
   overflow-x: hidden;
-  /* У Raleway по умолчанию "старинные" цифры разной высоты — для цен и счётчиков
-     включаем обычные выровненные. */
-  font-variant-numeric: lining-nums;
+  background-color: #f0f0f0;
+  color: var(--color-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {

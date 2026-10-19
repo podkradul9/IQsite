@@ -49,18 +49,18 @@ export default function ResultPage() {
           <ScoreGauge percent={(total / maxScore) * 100} label={`${total}/${maxScore}`} />
         </div>
 
-        <h1 className="font-display text-2xl sm:text-3xl font-bold text-ink mb-6">{result.title}</h1>
+        <h1 className="font-display text-2xl sm:text-3xl font-normal tracking-tight text-ink mb-6">{result.title}</h1>
 
         {hasAccess ? (
           <p className="text-ink-soft leading-relaxed">{result.text}</p>
         ) : (
-          <div className="bg-card rounded-2xl ring-1 ring-white/5 p-6">
+          <div className="bg-card rounded-2xl ring-1 ring-white/70 backdrop-blur-xl shadow-[0_30px_60px_-35px_rgba(30,50,90,0.3)] p-6">
             <p className="text-ink-soft mb-4 text-sm">
               Полный отчёт с рекомендациями доступен по подписке.
             </p>
             <button
               onClick={() => setShowModal(true)}
-              className="w-full py-3 rounded-xl bg-marker hover:bg-marker-dark text-white font-semibold transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+              className="w-full py-3 rounded-xl bg-marker hover:bg-marker-dark text-white font-normal transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
             >
               Получить результат
             </button>
