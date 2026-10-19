@@ -1,29 +1,42 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Unbounded", "Manrope", ui-sans-serif, system-ui, sans-serif;
+@font-face {
+    font-family: "Helvetica Regular";
+    src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.eot");
+    src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.svg#Helvetica Regular")format("svg");
+}
 
-  --color-ink: #14162b;
-  --color-ink-soft: #6b6e85;
-  --color-paper: #f5f5fb;
-  --color-marker: #ff4438;
-  --color-marker-dark: #e12f24;
+/* В "Helvetica Regular" нет кириллицы, поэтому русские буквы берутся из следующих
+   в списке системных Helvetica Neue / Helvetica / Arial — они того же рисунка.
+   Токены ink/paper/card/marker сохранили названия, поэтому внутренние страницы
+   (тест, результат, оплата, кабинет) перекрасились без переписывания классов. */
+@theme {
+  --font-helvetica: "Helvetica Regular", "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-helvetica);
+  --font-display: var(--font-helvetica);
+
+  --color-ink: rgb(30 50 90 / 0.95);
+  --color-ink-soft: #5E6470;
+  --color-paper: #f0f0f0;
+  --color-card: rgb(255 255 255 / 0.6);
+  --color-marker: rgb(30 50 90 / 0.8);
+  --color-marker-dark: rgb(30 50 90);
 }
 
 :root {
-  font-family: var(--font-sans);
+  font-family: var(--font-helvetica);
+  --index: calc(1vw + 1vh);
 }
 
 body {
-  background: var(--color-paper);
-}
-
-/* Точечная сетка — отсылка к бланку ответов с кружками-вариантами. Используется
-   один раз, в хиро на главной — намеренно не повторяется по всему сайту. */
-.bg-dot-grid {
-  background-image: radial-gradient(circle, rgba(20, 22, 43, 0.14) 1.5px, transparent 1.5px);
-  background-size: 18px 18px;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #f0f0f0;
+  color: var(--color-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {

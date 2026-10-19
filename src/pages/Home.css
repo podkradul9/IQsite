@@ -1,0 +1,412 @@
+/* Главная: хиро в стиле glassmorphism (components/hero), ниже — плавный скролл
+   GSAP ScrollSmoother и двухколоночная галерея с параллаксом, где вместо картинок
+   стоят постеры тестов (TestPoster). Палитра: фон #f0f0f0, тёмно-синий
+   rgba(30,50,90), серо-синий #5E6470, матовое стекло. */
+
+.content, .gallery > * {
+  will-change: transform;
+}
+
+.page-container {
+  padding: 0 7vw;
+}
+
+/* ---------- Хиро ---------- */
+
+/* Подложка под видео в хиро: видна, пока ролик грузится или если он заблокирован */
+.hero-fallback {
+  background:
+    radial-gradient(120% 80% at 70% 20%, rgba(255, 255, 255, .9), transparent 60%),
+    linear-gradient(160deg, #dfe8f3 0%, #eef1f5 45%, #cfdbe9 100%);
+}
+
+/* ---------- Галерея ---------- */
+
+.gallery {
+  --gallery-gap: calc(var(--index) * 7.5);
+  display: flex;
+  padding: calc(var(--index) * 8) 0;
+}
+
+.gallery > * {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gallery__item {
+  width: 100%;
+  max-width: calc(var(--index) * 21);
+  margin-bottom: var(--gallery-gap);
+  border-radius: 2.2rem;
+}
+
+.gallery__left {
+  margin-top: calc(var(--gallery-gap) * 1.75);
+}
+
+.gallery__right .gallery__item {
+  margin: 0;
+  margin-top: var(--gallery-gap);
+}
+
+.text-block {
+  color: #5E6470;
+  position: relative;
+}
+
+.text-block__h {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2.4rem;
+  letter-spacing: -.01em;
+  color: rgba(30, 50, 90, .95);
+  margin-bottom: 1.5rem;
+}
+
+.text-block__p {
+  line-height: 1.75;
+}
+
+/* ---------- Постеры тестов ---------- */
+
+.poster {
+  --poster-bg: rgba(255, 255, 255, .55);
+  --poster-fade: rgba(255, 255, 255, .85);
+  --poster-fg: rgba(30, 50, 90, .95);
+  --poster-soft: #5E6470;
+  --poster-accent: rgba(30, 50, 90, .6);
+  --poster-glow: linear-gradient(145deg, #c3d3ea, #eef2f8);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  container-type: inline-size;
+  background: var(--poster-bg);
+  color: var(--poster-fg);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, .7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 30px 60px -35px rgba(30, 50, 90, .3);
+}
+
+.poster:focus-visible {
+  outline: 2px solid var(--color-marker);
+  outline-offset: 6px;
+}
+
+.poster__art {
+  position: absolute;
+  inset: 0;
+  transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+}
+
+.poster:hover .poster__art {
+  transform: scale(1.045);
+}
+
+.poster__art > * {
+  position: absolute;
+  display: block;
+}
+
+.poster__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 18cqw 7cqw 7cqw;
+  background: linear-gradient(to top, var(--poster-fade) 55%, transparent);
+}
+
+.poster__category {
+  display: block;
+  font-size: max(11px, 2.6cqw);
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  color: var(--poster-accent);
+  margin-bottom: 2.5cqw;
+}
+
+.poster__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -.01em;
+  font-size: max(19px, 6.4cqw);
+  line-height: 1.12;
+  margin-bottom: 2.5cqw;
+}
+
+.poster__text {
+  font-size: max(13px, 3.1cqw);
+  line-height: 1.55;
+  color: var(--poster-soft);
+  margin-bottom: 5cqw;
+}
+
+.poster__cta {
+  display: inline-flex;
+  gap: .5em;
+  font-size: max(12px, 2.8cqw);
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  padding-bottom: .35em;
+  border-bottom: 1px solid currentColor;
+  align-self: flex-start;
+}
+
+.poster__cta span {
+  transition: transform .3s;
+}
+
+.poster:hover .poster__cta span {
+  transform: translateX(.35em);
+}
+
+.poster-iq__word, .poster-love__word, .poster-pair__word,
+.poster-charm__word, .poster-charisma__word, .poster-reaction__ms {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: .8;
+}
+
+/* IQ — огромные буквы поверх светящегося круга */
+.poster--iq {
+  aspect-ratio: 4 / 5;
+}
+
+.poster-iq__circle {
+  width: 62cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--poster-glow);
+  right: -10cqw;
+  top: 10cqw;
+}
+
+.poster-iq__word {
+  font-size: 66cqw;
+  letter-spacing: -.04em;
+  left: 4cqw;
+  top: 7cqw;
+}
+
+.poster-iq__row {
+  top: 7cqw;
+  right: 7cqw;
+  font-size: max(11px, 2.8cqw);
+  letter-spacing: .25em;
+  color: var(--poster-soft);
+}
+
+/* Отношения (для девушек) — тёмно-синий постер с контурным вертикальным словом */
+.poster--love {
+  --poster-bg: rgba(30, 50, 90, .88);
+  --poster-fade: rgba(30, 50, 90, .95);
+  --poster-fg: #fff;
+  --poster-soft: rgba(255, 255, 255, .75);
+  --poster-accent: rgba(255, 255, 255, .6);
+  aspect-ratio: 3 / 4;
+}
+
+.poster-love__word {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  right: 3cqw;
+  top: 5cqw;
+  font-size: 18cqw;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, .75);
+}
+
+.poster-love__heart {
+  left: 7cqw;
+  top: 4cqw;
+  font-size: 36cqw;
+  line-height: 1;
+  color: #c3d3ea;
+}
+
+/* Отношения (для парней) — голубой постер с двумя пересекающимися кольцами */
+.poster--pair {
+  --poster-bg: rgba(207, 219, 233, .75);
+  --poster-fade: rgba(214, 224, 237, .95);
+  aspect-ratio: 5 / 6;
+}
+
+.poster-pair__ring {
+  width: 36cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2.4cqw solid rgba(30, 50, 90, .9);
+  top: 9cqw;
+}
+
+.poster-pair__ring--a {
+  left: 8cqw;
+}
+
+.poster-pair__ring--b {
+  left: 32cqw;
+  border-color: #8fa7cc;
+}
+
+.poster-pair__word {
+  writing-mode: vertical-rl;
+  right: 6cqw;
+  top: 7cqw;
+  font-size: 13cqw;
+  color: rgba(30, 50, 90, .9);
+}
+
+/* Привлекательность (для женщин) — слово и голубая диагональ */
+.poster--charm {
+  aspect-ratio: 2 / 3;
+}
+
+.poster-charm__bar {
+  width: 150cqw;
+  height: 17cqw;
+  left: -25cqw;
+  top: 52cqw;
+  transform: rotate(-24deg);
+  background: linear-gradient(90deg, #8fa7cc, #c3d3ea);
+}
+
+.poster-charm__word {
+  font-size: 25cqw;
+  left: 6cqw;
+  top: 10cqw;
+  letter-spacing: -.02em;
+}
+
+/* Привлекательность (для мужчин) — высокий постер с вертикальным словом */
+.poster--charisma {
+  aspect-ratio: 9 / 16;
+}
+
+.poster-charisma__word {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  left: 5cqw;
+  top: 6cqw;
+  font-size: 21cqw;
+  letter-spacing: .02em;
+}
+
+.poster-charisma__dot {
+  width: 44cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--poster-glow);
+  right: 9cqw;
+  top: 24cqw;
+}
+
+/* Скорость реакции — круг становится зелёным при наведении,
+   как фон в самом тесте */
+.poster--reaction {
+  aspect-ratio: 5 / 7;
+}
+
+.poster-reaction__circle {
+  width: 66cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  left: 17cqw;
+  top: 9cqw;
+  background: rgba(30, 50, 90, .85);
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2cqw;
+  transition: background-color .25s;
+}
+
+.poster--reaction:hover .poster-reaction__circle {
+  background: #2ecc71;
+}
+
+.poster-reaction__ms {
+  font-size: 22cqw;
+  color: #fff;
+}
+
+.poster-reaction__unit {
+  font-size: max(11px, 3.4cqw);
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .85);
+}
+
+/* ---------- Подвал ---------- */
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  padding: 3rem 0 4rem;
+  border-top: 1px solid rgba(30, 50, 90, .1);
+  margin: 0 7vw;
+}
+
+.site-footer__logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: -.03em;
+  color: rgba(30, 50, 90, .9);
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 1.75rem;
+  font-size: .85rem;
+}
+
+.site-footer__links a {
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  transition: color .2s;
+  border-radius: 4px;
+}
+
+.site-footer__links a:hover {
+  color: var(--color-ink);
+}
+
+.site-footer__links a:focus-visible {
+  outline: 2px solid var(--color-marker);
+  outline-offset: 3px;
+}
+
+/* ---------- Телефоны ---------- */
+
+@media (max-width: 760px) {
+  .gallery {
+    flex-direction: column;
+    padding: 4rem 0;
+  }
+
+  .gallery__left {
+    margin-top: 0;
+  }
+
+  .gallery__item,
+  .gallery__right .gallery__item {
+    max-width: 30rem;
+    margin: 0 0 3.5rem;
+  }
+
+  .text-block__h {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+}

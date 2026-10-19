@@ -38,8 +38,8 @@ export default function Unsubscribe() {
 
   return (
     <div className="min-h-screen bg-paper flex items-center justify-center px-6">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-sm p-7 text-center">
-        <h1 className="font-display text-xl font-bold text-ink mb-4">Отмена подписки</h1>
+      <div className="w-full max-w-md bg-card rounded-3xl ring-1 ring-white/70 backdrop-blur-xl shadow-[0_30px_60px_-35px_rgba(30,50,90,0.3)] p-7 text-center">
+        <h1 className="font-display text-xl font-normal tracking-tight text-ink mb-4">Отмена подписки</h1>
 
         {status === "loading" && <p className="text-ink-soft">Проверяем ссылку...</p>}
 
