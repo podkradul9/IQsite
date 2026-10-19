@@ -46,8 +46,8 @@ export default function TestPage() {
               role="radio"
               aria-checked={selected === i}
               onClick={() => selectOption(i, opt.score)}
-              className={`w-full flex items-center gap-4 text-left px-5 py-4 rounded-2xl bg-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-marker ${
-                selected === i ? "ring-2 ring-marker" : "hover:bg-ink/[0.03]"
+              className={`w-full flex items-center gap-4 text-left px-5 py-4 rounded-2xl bg-card transition focus:outline-none focus-visible:ring-2 focus-visible:ring-marker ${
+                selected === i ? "ring-2 ring-marker" : "hover:bg-white/[0.06]"
               }`}
             >
               <span

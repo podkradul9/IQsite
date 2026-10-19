@@ -15,8 +15,8 @@ export default function LegalDoc() {
 
   return (
     <div className="min-h-screen bg-paper py-12 px-6">
-      <div className="max-w-2xl mx-auto bg-white rounded-3xl shadow-sm p-8">
-        <div className="bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl p-3 mb-6">
+      <div className="max-w-2xl mx-auto bg-card rounded-3xl ring-1 ring-white/5 p-8">
+        <div className="bg-amber-400/10 border border-amber-400/25 text-amber-200 text-xs rounded-xl p-3 mb-6">
           Это шаблон документа для старта проекта, а не готовый юридический текст. Перед
           публикацией сайта замените поля в квадратных скобках на реальные реквизиты и
           проверьте документ с юристом.

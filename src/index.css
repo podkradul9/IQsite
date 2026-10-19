@@ -1,29 +1,43 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Unbounded", "Manrope", ui-sans-serif, system-ui, sans-serif;
+@font-face {
+  font-family: "Raleway Local";
+  src: url("./assets/fonts/raleway-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
 
-  --color-ink: #14162b;
-  --color-ink-soft: #6b6e85;
-  --color-paper: #f5f5fb;
+/* Тёмная палитра из дизайна "creative scroll": текстурный графитовый фон, тёплый
+   светлый текст и красный акцент как на постерах галереи. Токены ink/paper/marker
+   оставлены прежними по названию, поэтому все внутренние страницы перекрасились
+   без переписывания классов. */
+@theme {
+  --font-sans: "Raleway", "Raleway Local", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Jost", "Raleway Local", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #f4efec;
+  --color-ink-soft: #b5aeab;
+  --color-paper: #161616;
+  --color-card: #222121;
   --color-marker: #ff4438;
   --color-marker-dark: #e12f24;
 }
 
 :root {
   font-family: var(--font-sans);
+  color-scheme: dark;
+  --index: calc(1vw + 1vh);
 }
 
 body {
-  background: var(--color-paper);
-}
-
-/* Точечная сетка — отсылка к бланку ответов с кружками-вариантами. Используется
-   один раз, в хиро на главной — намеренно не повторяется по всему сайту. */
-.bg-dot-grid {
-  background-image: radial-gradient(circle, rgba(20, 22, 43, 0.14) 1.5px, transparent 1.5px);
-  background-size: 18px 18px;
+  background-color: var(--color-paper);
+  background-image: url("./assets/bg.jpg");
+  background-size: 50px;
+  color: var(--color-ink);
+  overflow-x: hidden;
+  /* У Raleway по умолчанию "старинные" цифры разной высоты — для цен и счётчиков
+     включаем обычные выровненные. */
+  font-variant-numeric: lining-nums;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -18,7 +18,7 @@ export default function ScoreGauge({ percent, label, color = "var(--color-marker
   return (
     <div className="relative inline-flex items-center justify-center" role="img" aria-label={`Результат: ${label}`}>
       <svg width="140" height="140" viewBox="0 0 140 140" className="-rotate-90">
-        <circle cx="70" cy="70" r={radius} fill="none" stroke="#E7E7F2" strokeWidth="10" />
+        <circle cx="70" cy="70" r={radius} fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="10" />
         <circle
           cx="70"
           cy="70"

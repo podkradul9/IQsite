@@ -8,7 +8,7 @@ export default function NotFound() {
       <p className="text-ink-soft text-sm mb-6">Такой страницы нет — возможно, ссылка устарела.</p>
       <Link
         to="/"
-        className="px-5 py-2.5 rounded-xl bg-marker hover:bg-marker-dark text-white font-semibold text-sm transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2"
+        className="px-5 py-2.5 rounded-xl bg-marker hover:bg-marker-dark text-white font-semibold text-sm transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
       >
         На главную
       </Link>

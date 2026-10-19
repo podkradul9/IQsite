@@ -109,7 +109,7 @@ export default function PaywallModal({ testSlug, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 bg-ink/40 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50"
       onClick={onClose}
     >
       <div
@@ -117,7 +117,7 @@ export default function PaywallModal({ testSlug, onClose }) {
         aria-modal="true"
         aria-labelledby="paywall-title"
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-md bg-white rounded-3xl shadow-xl p-7 animate-modal-pop"
+        className="relative w-full max-w-md bg-card rounded-3xl shadow-xl p-7 animate-modal-pop"
       >
         <button
           onClick={onClose}
@@ -141,7 +141,7 @@ export default function PaywallModal({ testSlug, onClose }) {
             <div key={i} className="flex flex-col items-center">
               <div
                 className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold tabular-nums ${
-                  i === 0 ? "bg-ink text-white" : "border-2 border-marker/50 text-ink"
+                  i === 0 ? "bg-marker text-white" : "border-2 border-marker/50 text-ink"
                 }`}
               >
                 {val}
@@ -201,7 +201,7 @@ export default function PaywallModal({ testSlug, onClose }) {
           </label>
 
           {error && (
-            <p className="text-red-500 text-xs mb-3" role="alert">
+            <p className="text-red-400 text-xs mb-3" role="alert">
               {error}
             </p>
           )}
@@ -209,7 +209,7 @@ export default function PaywallModal({ testSlug, onClose }) {
           <button
             type="submit"
             disabled={!canSubmit}
-            className="w-full py-3.5 rounded-xl bg-marker hover:bg-marker-dark disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2"
+            className="w-full py-3.5 rounded-xl bg-marker hover:bg-marker-dark disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
           >
             {loading ? "Секунду..." : "Получить результат"}
           </button>

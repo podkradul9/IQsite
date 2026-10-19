@@ -52,7 +52,7 @@ export default function Dashboard() {
           </button>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">
+        <div className="bg-card rounded-2xl ring-1 ring-white/5 p-6 mb-6">
           <h2 className="font-bold text-ink mb-3">Подписка</h2>
           {sub ? (
             <>
@@ -68,7 +68,7 @@ export default function Dashboard() {
                 <button
                   onClick={cancelSubscription}
                   disabled={canceling}
-                  className="px-4 py-2 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 transition text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+                  className="px-4 py-2 rounded-xl bg-rose-500/10 text-rose-300 hover:bg-rose-500/20 transition text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
                 >
                   {canceling ? "Отменяем..." : "Отменить подписку"}
                 </button>
@@ -88,7 +88,7 @@ export default function Dashboard() {
           )}
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm p-6">
+        <div className="bg-card rounded-2xl ring-1 ring-white/5 p-6">
           <h2 className="font-bold text-ink mb-3">История тестов</h2>
           {history.length === 0 ? (
             <p className="text-ink-soft text-sm">Пока ничего не пройдено</p>

@@ -54,13 +54,13 @@ export default function ResultPage() {
         {hasAccess ? (
           <p className="text-ink-soft leading-relaxed">{result.text}</p>
         ) : (
-          <div className="bg-white rounded-2xl shadow-sm p-6">
+          <div className="bg-card rounded-2xl ring-1 ring-white/5 p-6">
             <p className="text-ink-soft mb-4 text-sm">
               Полный отчёт с рекомендациями доступен по подписке.
             </p>
             <button
               onClick={() => setShowModal(true)}
-              className="w-full py-3 rounded-xl bg-marker hover:bg-marker-dark text-white font-semibold transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2"
+              className="w-full py-3 rounded-xl bg-marker hover:bg-marker-dark text-white font-semibold transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
             >
               Получить результат
             </button>

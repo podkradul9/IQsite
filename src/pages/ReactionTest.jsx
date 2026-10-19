@@ -63,11 +63,11 @@ export default function ReactionTest() {
   }
 
   const boxStyles = {
-    intro: "bg-white text-ink-soft",
+    intro: "bg-card text-ink-soft",
     waiting: "bg-amber-200 text-amber-900",
     go: "bg-emerald-400 text-white",
     early: "bg-rose-300 text-rose-900",
-    roundResult: "bg-white text-ink-soft",
+    roundResult: "bg-card text-ink-soft",
   };
 
   const boxText = {
@@ -82,14 +82,14 @@ export default function ReactionTest() {
     <div className="min-h-screen bg-paper flex flex-col items-center justify-center px-6">
       <div className="w-full max-w-lg">
         <div className="text-center mb-4">
-          <span className="inline-block text-xs font-semibold text-amber-700 bg-amber-100 px-3 py-1 rounded-full">
+          <span className="inline-block text-xs font-semibold text-amber-300 bg-amber-400/15 px-3 py-1 rounded-full">
             Раунд {Math.min(round + 1, reactionTest.rounds)} из {reactionTest.rounds}
           </span>
         </div>
 
         <button
           onClick={handleBoxClick}
-          className={`w-full h-72 rounded-3xl flex items-center justify-center text-2xl font-bold font-display transition-colors duration-150 shadow-sm select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 ${boxStyles[phase]}`}
+          className={`w-full h-72 rounded-3xl flex items-center justify-center text-2xl font-bold font-display transition-colors duration-150 ring-1 ring-white/5 select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-marker focus-visible:ring-offset-2 ${boxStyles[phase]}`}
         >
           <span aria-live="polite">{boxText[phase]}</span>
         </button>

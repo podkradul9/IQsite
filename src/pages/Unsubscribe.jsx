@@ -38,7 +38,7 @@ export default function Unsubscribe() {
 
   return (
     <div className="min-h-screen bg-paper flex items-center justify-center px-6">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-sm p-7 text-center">
+      <div className="w-full max-w-md bg-card rounded-3xl ring-1 ring-white/5 p-7 text-center">
         <h1 className="font-display text-xl font-bold text-ink mb-4">Отмена подписки</h1>
 
         {status === "loading" && <p className="text-ink-soft">Проверяем ссылку...</p>}
@@ -70,7 +70,7 @@ export default function Unsubscribe() {
                 <button
                   onClick={confirmCancel}
                   disabled={status === "canceling"}
-                  className="w-full py-3 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 transition active:scale-[0.98] disabled:opacity-50 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+                  className="w-full py-3 rounded-xl bg-rose-500/10 text-rose-300 hover:bg-rose-500/20 transition active:scale-[0.98] disabled:opacity-50 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
                 >
                   {status === "canceling" ? "Отменяем..." : "Подтвердить отмену подписки"}
                 </button>
@@ -90,7 +90,7 @@ export default function Unsubscribe() {
         )}
 
         {status === "error" && (
-          <p className="text-rose-600 text-sm">Не получилось отменить подписку. Напишите нам на support@ваш-домен.ru</p>
+          <p className="text-rose-400 text-sm">Не получилось отменить подписку. Напишите нам на support@ваш-домен.ru</p>
         )}
 
         <Link to="/" className="block mt-6 text-ink-soft hover:text-ink-soft text-sm">
